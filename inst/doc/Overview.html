@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Overview</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Overview</h1>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>The purpose of this package is to generate verification trees and
+evaluations of user supplied statements. Trees are made by parsing a
+statement into a data structure composed of lists. Safe statement
+evaluations are done by executing the verification trees.</p>
+<div id="verification-trees" class="section level3">
+<h3>Verification Trees</h3>
+<p>Any statement can be represented by a tree data structure. Here is a
+quote from Wikipedia to explain the concept:</p>
+<blockquote>
+<p>In computer science, a tree is a widely used abstract data type that
+represents a hierarchical tree structure with a set of connected nodes.
+Each node in the tree can be connected to many children (depending on
+the type of tree), but must be connected to exactly one parent, except
+for the root node, which has no parent. These constraints mean there are
+no cycles or “loops” (no node can be its own ancestor), and also that
+each child can be treated like the root node of its own subtree, making
+recursion a useful technique for tree traversal. In contrast to linear
+data structures, many trees cannot be represented by relationships
+between neighboring nodes in a single straight line.</p>
+<footer>
+— Wikipedia.org Tree (data structure)
+</footer>
+</blockquote>
+<p>By default the package will know how to parse a R statement into a
+tree. In theory, you could supply your own tokens and use the package to
+parse any language that follows similar grammar.</p>
+<p>These verification trees have been used to port R statements into
+other languages. For example, one use case is to write out formulas in
+excel that replicate the calculations done in R.</p>
+</div>
+<div id="safe-evaluation" class="section level3">
+<h3>Safe Evaluation</h3>
+<p>Writing code that executes unverified code can be both powerful and
+dangerous. A common approach to doing this is with the following
+pattern:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text=</span><span class="st">&quot;unverified_code&quot;</span>))</span></code></pre></div>
+<p>The power comes from the flexibility this pattern gives us. It
+usually comes with a significant performance cost, but CPU time is
+cheaper than our developers.</p>
+<p>The danger comes from unknown unknowns. Your own input on your
+personal computer may not pose much of a risk. The same does not hold
+for input from nefarious/clever users on a server.</p>
+<p>Execution of a verification tree generated on unverified code is a
+different story. The risk is limited to what is deemed acceptable based
+on the supplied tokens. It comes with a greater performance cost, but
+removes the danger from unverified code.</p>
+</div>
+</div>
+<div id="functions" class="section level2">
+<h2>Functions</h2>
+<p>The focus of this package is limited to just creating and evaluating
+trees. The next sections cover the main functions.</p>
+<div id="create_tree" class="section level3">
+<h3>create_tree</h3>
+<p>The <code>create_tree</code> function takes a string and generates a
+tree. For example, we can parse the simple expression
+<code>2+3</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;2+3&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pval: list()</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ eval:List of 3</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;+&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;2&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;3&quot;</span></span></code></pre></div>
+<p>We can see the structure is a list of lists.</p>
+<div id="under-the-hood" class="section level4">
+<h4>Under the hood</h4>
+<p>You don’t need to understand the structure of the tree to use it.
+Just like you can drive a car without knowing how an engine works. This
+section will help reveal how the trees are formed.</p>
+<p>First lets confirm that we can replicate the tree structure:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pval =</span> <span class="fu">list</span>(),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">eval =</span> <span class="fu">list</span>(<span class="st">&quot;+&quot;</span>, <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;2&quot;</span>), <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;3&quot;</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="fu">expect_equal</span>(x,tree)</span></code></pre></div>
+<p>This test passes with zero error.</p>
+<p>A full tree is made up of two main branches:</p>
+<ul>
+<li><code>pval</code> - stands for parenthesis values</li>
+<li><code>eval</code> - stands for verification values</li>
+</ul>
+<div id="pval" class="section level5">
+<h5>pval</h5>
+<p>The first thing the function does is find all parenthesis blocks and
+treats them as sub statements. Each of these sub statements becomes an
+element of the <code>pval</code> element. The <code>eval</code> tree
+will have references to these <code>pval</code> entries.</p>
+<p>For example, lets tweak the <code>2+3</code> to
+<code>(2)+(3)</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;(2)+(3)&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pval:List of 2</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ \0:List of 2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ pval: list()</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ eval:List of 2</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;2&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ \1:List of 2</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ pval: list()</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ eval:List of 2</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;3&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ eval:List of 3</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;+&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;\\0&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;\\1&quot;</span></span></code></pre></div>
+<p>To replicate the structure:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pval_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="sc">\\</span><span class="st">0&quot;</span><span class="ot">=</span><span class="fu">list</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pval =</span> <span class="fu">list</span>(),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">eval =</span> <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span><span class="ot">=</span><span class="fu">list</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pval =</span> <span class="fu">list</span>(),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">eval =</span> <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;3&quot;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">pval =</span> pval_list,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">eval =</span> <span class="fu">list</span>(<span class="st">&quot;+&quot;</span>, <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">0&quot;</span>), <span class="fu">list</span>(<span class="st">&quot;atomic&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="fu">expect_equal</span>(x,tree)</span></code></pre></div>
+<p>This test passes with zero error.</p>
+<p>Now the <code>pval</code> list is not empty. We have an entry for
+<code>(2)</code> and <code>(3)</code>. Each entry in <code>pval</code>
+is a new tree unto itself and contains <code>pval</code> and
+<code>eval</code> branches.</p>
+</div>
+<div id="eval" class="section level5">
+<h5>eval</h5>
+<p>The <code>eval</code> branch splits the statement by operators into
+“atomic” elements.</p>
+<p>For example, if we just parse <code>2</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;2&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pval: list()</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ eval:List of 2</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;2&quot;</span></span></code></pre></div>
+<p>The <code>eval</code> is one level deep and the first element is the
+string <code>atomic</code>. This signifies that this is an end node of
+the tree.</p>
+<p>Lets expand this just a little bit:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;-2&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pval: list()</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ eval:List of 2</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;-&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;2&quot;</span></span></code></pre></div>
+<p>Now <code>eval</code> is two levels deep. The first element states
+the operator <code>-</code> and the second element is another branch
+that looks exactly like the <code>eval</code> branch in the previous
+example.</p>
+<p>If a parenthesis block is found, then the atomic element will be a
+reference to the which <code>pval</code> element:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;-(2)&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ pval:List of 1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ \0:List of 2</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ pval: list()</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ eval:List of 2</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr &quot;2&quot;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ eval:List of 2</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr &quot;-&quot;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ :List of 2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;atomic&quot;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr &quot;\\0&quot;</span></span></code></pre></div>
+<p>In this example, the <code>eval</code> second level atomic element is
+<code>\0</code>. This is a reference to the <code>\0</code> named
+element of the <code>pval</code> branch.</p>
+</div>
+</div>
+</div>
+<div id="eval_tree" class="section level3">
+<h3>eval_tree</h3>
+<p>Given a tree, we can execute it with the function
+<code>eval_tree</code>. Here is a basic example:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(<span class="st">&quot;2+3&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">eval_tree</span>(x)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</div>
+<div id="eval_text" class="section level3">
+<h3>eval_text</h3>
+<p>There is a convenience function that contains the tree creation
+stage. The <code>eval_text</code> takes text as an input:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">eval_text</span>(<span class="st">&quot;2+3&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</div>
+</div>
+<div id="shared-parameters" class="section level2">
+<h2>Shared Parameters</h2>
+<p>These three functions share the following parameters:</p>
+<ul>
+<li>singular_operators - tokens of length 1 that operate on a right hand
+value. For example, the <code>-</code> token is an operator to negate a
+vector. <code>NULL</code> value will be replaced with
+<code>c(&quot;-&quot;, &quot;!&quot;)</code>.</li>
+<li>binary_operators - tokens of any length that operate on a left and
+right hand values. For example, the <code>+</code> token is an operator
+that adds a left vector to a right vector. <code>NULL</code> value will
+be replaced with
+<code>c(&quot;,&quot;,&quot;|&quot;, &quot;&amp;&quot;, &quot;&lt;=&quot;, &quot;&lt;&quot;, &quot;&gt;=&quot;, &quot;&gt;&quot;, &quot;==&quot;, &quot;!=&quot;, &quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;%/%&quot;, &quot;/&quot;, &quot;%%&quot;, &quot;%in%&quot;, &quot;:&quot;, &quot;^&quot;)</code>.
+The order determines the precedence of the operators.</li>
+<li>valid_functions - tokens of any length that are prefixed on a
+parenthesis block and specify a function to run on the provided
+parameters within the block. For example, the <code>log</code> token
+will evaluate the logarithm value of the first parameter. Note named
+parameters are not support. <code>NULL</code> value will be replaced
+with <code>c(&quot;log&quot;,&quot;c&quot;, &quot;any&quot;,&quot;all&quot;, &quot;abs&quot;,&quot;ifelse&quot;)</code>.</li>
+</ul>
+<p>For example, if you want to be able to use the function
+<code>rnorm</code>, then you need to provide that as a item in the
+<code>valid_functions</code> parameter:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">eval_text</span>(<span class="st">&quot;2+rnorm(1)&quot;</span>, <span class="at">valid_functions=</span><span class="st">&quot;rnorm&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3.311074</span></span></code></pre></div>
+</div>
+<div id="map-parameter" class="section level2">
+<h2>map Parameter</h2>
+<p>The <code>eval_tree</code> and <code>eval_text</code> share the
+following parameter:</p>
+<ul>
+<li>map - a named list of data.frames/lists/matrices. Where the names
+are keys for referencing the values in the parameters.</li>
+</ul>
+<p>This parameter limits the scope of the execution environment (not in
+a strictly technical sense). In other words, they limit what values can
+be reference.</p>
+<p>Here is a basic concert example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>map_obj <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;#&quot;</span> <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">eval_text</span>(<span class="st">&quot;log(#x#)&quot;</span>, <span class="at">map=</span>map_obj)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></span></code></pre></div>
+<p>Here is a more complex example:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>map_obj <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;#&quot;</span> <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>),<span class="st">&quot;$&quot;</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="at">z =</span> <span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">eval_text</span>(<span class="st">&quot;#x# + $z$&quot;</span>, <span class="at">map=</span>map_obj)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0 0 0 0 0</span></span></code></pre></div>
+</div>
+<div id="microbenchmark" class="section level2">
+<h2>microbenchmark</h2>
+<p>To get a sense of the performance. Lets compare different ways we can
+run <code>log(1+2)</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="st">&quot;log(1+3)&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> evalR<span class="sc">::</span><span class="fu">create_tree</span>(text)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">log</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">2</span>)},</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  {<span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text=</span>text))},</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  {evalR<span class="sc">::</span><span class="fu">eval_tree</span>(tree)},</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  {evalR<span class="sc">::</span><span class="fu">eval_text</span>(text)},</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  {evalR<span class="sc">::</span><span class="fu">create_tree</span>(text)}, <span class="at">n=</span><span class="dv">1000</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in microbenchmark::microbenchmark({: Could not measure a positive</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; execution time for 74 evaluations.</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unit: nanoseconds</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                              expr   min    lq  mean median    uq    max neval</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                {     log(1 + 2) }   100   100   341    200   200  13100   100</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  {     eval(parse(text = text)) }  4100  5000  6300   6100  6600  22700   100</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    {     evalR::eval_tree(tree) } 18600 19700 21809  20500 21600  50000   100</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    {     evalR::eval_text(text) } 72900 74700 78777  75800 77250 116900   100</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  {     evalR::create_tree(text) } 50400 52350 57119  53550 55100 112100   100</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                 n     0     0     0      0     0      0   100</span></span></code></pre></div>
+<p>The pure R evaluation is much faster than any of the other methods.
+This is no surprise.</p>
+<p>The <code>evalR::eval_tree</code> block takes a couple times longer
+than the <code>eval(parse(text))</code> execution. This is a trade off
+considering the reduced risk. The <code>eval(parse(text))</code>
+execution is sometimes much slower when ran outside R Markdown.</p>
+<p>We also see that <code>evalR::eval_text</code> takes much longer than
+<code>evalR::eval_tree</code>. The majority of the
+<code>evalR::eval_text</code> time comes from the internal call to
+<code>evalR::create_tree</code>. This is where the no free lunch
+principle comes into play. The cost of the reduced risk is spent in
+creating the tree.</p>
+<p>If you’re lucky enough to have a set of user input that will be
+evaluated multiple times, then the design pattern of generating the tree
+once and using <code>evalR::eval_tree</code> will give similar
+performance to a straight <code>eval</code> call.</p>
+</div>
+<div id="final-thoughts" class="section level2">
+<h2>Final Thoughts</h2>
+<p>This package should be viewed as a building block and not as an end
+unto itself. You can consider using it anytime you’re tempted to write
+an <code>eval(parse(text))</code> statement.</p>
+</div>
+<div id="credit" class="section level2">
+<h2>Credit</h2>
+<p>Package logo was created using the <a href="https://game-icons.net">game-icons.net</a> website. Thank you for
+such a great product and for people willing to share their talents with
+others.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
